@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Core Objects</title>
+</head>
+<body>
+    <h2>JavaScript Core Objects</h2>
+    <p id="display"></p>
+    <p id="display-2"></p>
+
+    <script>
+        window.onload = function() {
+            setInterval(digitalClock, 1);
+        }
+
+        // 1000 ms == 1 second
+        // let d = new Date();
+        
+            
+        function digitalClock() {
+            let d = new Date();
+
+            let year = d.getFullYear();
+            let month = d.getMonth() + 1;
+            let date = d.getDate();
+
+            let hour = d.getHours();
+            let minute = d.getMinutes();
+            let second = d.getSeconds();
+            let millisecond= d.getMilliseconds();
+            
+            if (millisecond < 10) {
+                millisecond = '00' + millisecond;
+            } else if (millisecond >= 10 && millisecond < 100) {
+                millisecond = '0' + millisecond;
+            }
+
+            if (second < 10) {
+                second = '0' + second;
+            }
+            
+            if (minute < 10) {
+                minute = '0' + second;
+            }
+            
+            // can also use second.toString().padStart(2, "0")
+            // document.getElementById('display-2').innerHTML = `Time is: ${hour}:${minute.toString().padStart(2, "0")}:${second.toString().padStart(2, "0")}`;
+            document.getElementById('display').innerHTML = `Date is: ${month}/${date}/${year}`;
+            document.getElementById('display-2').innerHTML = `Time is: ${hour}:${minute}:${second}:${millisecond}`;
+        }
+        
+    </script>
+</body>
+</html>
